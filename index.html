@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Weather</title>
+  </head>
+  <body onload="getLocation() ">
+    <div class="header py-5">
+      <div class="container d-flex justify-content-between">
+        <a class=" " href="#">
+          <img
+            src="imgs/logo@2x.png"
+            alt="Logo"
+            width="64"
+            height="38"
+            class="photo me-2"
+          />
+
+          <div class="logo-type">
+            <h1 class="header-title me-2 text-white">Weather</h1>
+            <small class="description">tagline goes here</small>
+          </div>
+        </a>
+
+        <div class="main-nav">
+          <button id="navBarBtn" class="p-3 rounded-5 bg-transparent">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <ul class="text-white">
+            <li class="nav-item home">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Live Cameras</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Photos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"> contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div
+        id="navMob"
+        class="container navMob d-none text-center mt-4 rounded-3"
+      >
+        <ul class="text-white">
+          <li class="nav-item home">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Live Cameras</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Photos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"> contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="weather-body">
+      <div class="container">
+        <form class="position-relative">
+          <input
+            type="text"
+            class="w-100 text-white p-3 rounded-5"
+            placeholder="Find Your Location"
+            id="location"
+            oninput="getWeather(this.value)"
+          />
+          <button
+            class="rounded-2 position-absolute rounded-5 py-2 px-4 text-white"
+            id="btn"
+          >
+            Find
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="weather-foot position-relative">
+      <div class="container">
+        <div class="forecast-container text-white d-flex position-absolute">
+          <div class="forecast">
+            <div class="head1 p-2 d-flex justify-content-between">
+              <span id="today"></span>
+              <span id="date"></span>
+            </div>
+            <div class="body p-4">
+              <div class="today">
+                <div class="country" id="country"></div>
+                <div class="degree">
+                  <div class="num fw-bold">
+                    <span class="wither-degree" id="currentTemp"></span>
+                  </div>
+                  <div class="icon"><img src="" alt="" id="currentIcon" /></div>
+                </div>
+                <div class="my-4 blue" id="condition"></div>
+                <div class="custom d-flex pb-1">
+                  <p class="icon me-3">
+                    <img src="imgs/icon-umberella@2x.png" alt="" /><span
+                      class="ps-2"
+                      >20%</span
+                    >
+                  </p>
+                  <p class="icon me-3">
+                    <img src="imgs/icon-wind@2x.png" alt="" /><span class="ps-2"
+                      >18km/h</span
+                    >
+                  </p>
+                  <p class="icon me-3">
+                    <img src="imgs/icon-compass@2x.png" alt="" /><span
+                      class="ps-2"
+                      >East</span
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tomorrow forecast">
+            <div class="head text-center p-2" id="tommorrowDay"></div>
+            <div class="body2 d-flex align-items-center flex-column">
+              <div class="content w-100 text-center">
+                <div class="icon">
+                  <img src="" alt="" id="secIcon" />
+                </div>
+                <div class="degree">
+                  <span class="wither-degree1 fs-3" id="tomMaxTemp"></span>
+                </div>
+                <small class="wither-degree2" id="tomMinTemp"></small>
+                <div class="blue pt-3" id="tomCondition"></div>
+              </div>
+            </div>
+          </div>
+          <div class="tomorrow forecast">
+            <div class="head1 text-center p-2" id="thirdDay"></div>
+            <div class="body d-flex align-items-center flex-column">
+              <div class="content w-100 text-center">
+                <div class="icon">
+                  <img alt="" id="thirdIcon" />
+                </div>
+                <div class="degree">
+                  <span class="wither-degree1 fs-3" id="secDayMaxTemp"></span>
+                </div>
+                <small class="wither-degree2" id="secDayMinTemp"></small>
+                <div class="blue pt-3" id="secDayCondition"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="container">
+        <div class="row pt-5">
+          <div class="col-md-8">
+            <form class="position-relative">
+              <input
+                type="text"
+                class="w-100 p-3 rounded-5"
+                placeholder="Enter your email to subscribe"
+              />
+              <button class="rounded-5 px-3 py-2 position-absolute text-white">
+                Subscribe
+              </button>
+            </form>
+          </div>
+          <div class="col-md-3 col-md-offset-1">
+            <div class="social-links ms-5 pt-3">
+              <a href="" class="me-2 p-2 rounded-5">
+                <i class="fa-brands fa-facebook-f fs-5"></i>
+              </a>
+              <a href="" class="me-2 p-2 rounded-5">
+                <i class="fa-brands fa-twitter fs-5"></i
+              ></a>
+              <a href="" class="me-2 p-2 rounded-5"
+                ><i class="fa-brands fa-google fs-5"></i
+              ></a>
+              <a href="" class="me-2 p-2 rounded-5"
+                ><i class="fa-brands fa-pinterest fs-5"></i
+              ></a>
+            </div>
+          </div>
+          <p class="my-5">
+            Copyright 2014 Company name. Designed by Themezy. All rights
+            reserved
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
