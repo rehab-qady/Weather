@@ -31,7 +31,7 @@ let data;
 async function getWeather(letter) {
   var apiResponse = await fetch(`http://api.weatherapi.com/v1/search.json?key=c4f55199c8c442e9a68114827240201&q=${letter}`);
   var finalResult = await apiResponse.json();
-  countryName = finalResult[0].name;
+  countryName = finalResult[0].country;
   document.getElementById("country").innerHTML = countryName;
   console.log(countryName);
   console.log(finalResult);

@@ -110,7 +110,7 @@ a{
     border: none;
 }
 .weather-foot{  
-    height: 450px;
+    /* height: 450px; */
     background-color: var(--sec-color);
 }
 .weather-foot .forecast-container{
@@ -120,9 +120,9 @@ a{
     flex-wrap: wrap;
     overflow: hidden;
 }
-.weather-foot .forecast{
+/* .weather-foot .forecast{
    width: 30%;  
-} 
+}  */
 .weather-foot  .head1{
  background-color: var(--fourth-color);
 }
